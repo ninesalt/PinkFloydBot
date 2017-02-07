@@ -2,8 +2,8 @@ var fs = require("fs");
 var _ = require('lodash');
 
 var express = require('express');
-var app = express();
-app.set('port', (process.env.PORT || 5000));
+const app = express();
+app.listen('port', (process.env.PORT || 5000));
 
 const Discord = require('discord.js');
 var request = require('request');
@@ -50,10 +50,10 @@ client.on('message', message =>{
 
     if(message.content.indexOf(']]lyrics') != -1 && message.content != "]]lyrics"){
 
-        var songName = message.content.substring("]]lyrics".length).trim();
-        var formattedName;
-        console.log(songName);
+        var songName = message.content.substring("]]lyrics".length).trim().toLowerCase();
+
         var lyrics;
+        var formattedName;
 
         for(var i = 0; i < songs.length ; i++){
             if(songs[i].name.toLowerCase() == songName){
