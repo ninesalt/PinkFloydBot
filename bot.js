@@ -41,8 +41,25 @@ client.on('ready', () => {
 
 client.on('message', message =>{
 
+    // if(message.content == "]]help"){
+    //
+    //     // var user = message.author;
+    //
+    //     var help = "Here are all the commands for this bot: " + "\n" +
+    //     "*]]lyrics* : Starts the lyrics game" + "\n" +
+    //     "*]]lyrics *song name*: returns the lyrics of the specified song." + "\n" +
+    //     "*]]help*: Sends author of message a PM containing commands." + "\n" +
+    //     "*]]]whatever*: Triggers the smart bot. Type anything after ]]] (three not two) and you should get a reply. ie: ]]]hello"
+    //
+    //     // console.log(message.author.DMChannel);
+    //     message.author.DMChannel.sendMessage(help);
+    //     message.reply('I have sent you a PM with all the useful commands.');
+    //
+    //
+    // }
+
     if(message.content == "]]who is the most awesome person ever?"){
-        message.reply('You are, LuciferSam. You are also my father.')
+        message.reply('LuciferSam is. He is also my father.')
     }
 
     if(message.content.indexOf(']]lyrics') != -1 && message.content != "]]lyrics"){
@@ -110,9 +127,10 @@ client.on('message', message =>{
         });
 
 
-        message.channel.sendMessage("*What song are these lyrics from? Choose an answer by sending ]]1, ]]2, etc.*");
-        message.channel.sendMessage(lyrics);
-        message.channel.sendMessage(shuffled);
+        var toSend = "*What song are these lyrics from? Choose an answer by sending ]]1, ]]2, etc.*" + "\n"
+        + lyrics + "\n" + shuffled;
+
+        message.channel.sendMessage(toSend);
 
     }
 
