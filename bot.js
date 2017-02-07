@@ -1,5 +1,10 @@
 var fs = require("fs");
 var _ = require('lodash');
+
+var express = require('express');
+var app = express();
+app.set('port', (process.env.PORT || 5000));
+
 const Discord = require('discord.js');
 var request = require('request');
 const client = new Discord.Client();
