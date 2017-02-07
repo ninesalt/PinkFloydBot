@@ -3,7 +3,6 @@ var _ = require('lodash');
 
 var express = require('express');
 const app = express();
-app.listen('port', (process.env.PORT || 5000));
 
 const Discord = require('discord.js');
 var request = require('request');
@@ -135,3 +134,4 @@ client.on('message', message =>{
 });
 
 client.login('Mjc2Nzk4MDgyODU3ODI4MzU0.C3UgIA.0oIt6ovSpBTcBBf83xqsl4MrphA');
+app.listen('port', (process.env.PORT || 5000));
