@@ -1,4 +1,4 @@
-// Link to add bot to your server/guild: 
+// Link to add bot to your server/guild:
 // https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0
 
 var fs = require("fs");
@@ -138,12 +138,22 @@ client.on('message', message =>{
             //choices
             var correctAnswer = randomSong.name;  //one of the choices
             correctSongName = correctAnswer;
-            var choice2 = songs[Math.floor(Math.random() * songs.length)].name;
-            var choice3 = songs[Math.floor(Math.random() * songs.length)].name;
-            var choice4 = songs[Math.floor(Math.random() * songs.length)].name;
-            var choice5 = songs[Math.floor(Math.random() * songs.length)].name;
 
-            var choices = [correctAnswer, choice2, choice3, choice4, choice5];
+            var choices = [];
+            choices.push(correctAnswer);
+
+            while(choices.length != 5){
+
+                var choice = songs[Math.floor(Math.random() * songs.length)].name;
+
+                //to avoid duplicate choices (although very unlikely)
+                if(choices.indexOf(choice) == -1){
+                    choices.push(choice);
+                }
+            }
+
+            // console.log(choices);
+
             var shuffled = _.shuffle(choices);
             var correctIndex = shuffled.indexOf(correctAnswer) + 1;
             correctSongIndex = correctIndex;
