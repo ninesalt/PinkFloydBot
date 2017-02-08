@@ -32,14 +32,15 @@ client.on('ready', () => {
             var song = songsInAlbum[i];
 
             if(!song.instrumental){
-                songs.push({name: song.songName, album: album, lyrics: song.lyrics});
+                songs.push({name: song.songName, album: album, lyrics: song.lyrics.replace(/&quot;/g, "'")});
             }
 
         }
 
     }
 
-    console.log("I am ready");
+    console.log("Ready");
+
 });
 
 client.on('message', message =>{
@@ -95,6 +96,7 @@ client.on('message', message =>{
             var formattedName;
 
             for(var i = 0; i < songs.length ; i++){
+                
                 if(songs[i].name.toLowerCase() == songName){
                     lyrics = songs[i].lyrics;
                     formattedName = songs[i].name;
