@@ -92,7 +92,7 @@ client.on('message', message =>{
         //show lyrics of song
         if(message.content.indexOf(']]lyrics') != -1 && message.content != "]]lyrics"){
 
-        var songName = message.content.substring("]]lyrics".length).trim().toLowerCase();
+            var songName = message.content.substring("]]lyrics".length).trim().toLowerCase();
 
             var lyrics;
             var formattedName;
@@ -196,3 +196,8 @@ server.on('listening',function(){
 });
 
 server.listen(process.env.PORT || 5050);
+
+//to keep the bot always awake
+setInterval(function(){
+    http.get("http://pinkfloydbot.herokuapp.com")
+}, 300000)
