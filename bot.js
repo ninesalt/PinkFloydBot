@@ -1,3 +1,6 @@
+// Link to add bot to your server/guild: 
+// https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0
+
 var fs = require("fs");
 var _ = require('lodash');
 var http = require('http');
@@ -6,7 +9,6 @@ var request = require('request');
 const client = new Discord.Client();
 
 var botID = "276798082857828354";
-
 var albums = [];   //has attributes album name and year
 var songs = [];      //non instrumentals only, has attributes (song) name, album, lyrics
 
@@ -96,7 +98,7 @@ client.on('message', message =>{
             var formattedName;
 
             for(var i = 0; i < songs.length ; i++){
-                
+
                 if(songs[i].name.toLowerCase() == songName){
                     lyrics = songs[i].lyrics;
                     formattedName = songs[i].name;
