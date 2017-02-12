@@ -10,7 +10,7 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 * `]]help`: Sends a PM containing a list of all the commands and what they do.
 
-* `]]lyrics`: Starts the lyrics trivia game`
+* `]]lyrics`: Starts the lyrics trivia game.
 
 * `]]lyrics song Name`: Displays the lyrics of the specified song. ie: `]]lyrics echoes`
 
