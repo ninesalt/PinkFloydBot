@@ -70,7 +70,8 @@ client.on('message', message =>{
         if(lyricsMode){
 
             //invalid answer
-            if(message.content.length > 3 || isNaN(message.content.substring(2)) || parseInt(message.content.substring(2)) < 1 || parseInt(message.content.substring(2)) > 5){
+            if(message.content.length > 3 || isNaN(message.content.substring(2))
+            || parseInt(message.content.substring(2)) < 1 || parseInt(message.content.substring(2)) > 5){
                 message.channel.sendMessage("Please enter an answer in the correct format (ie: ]]2 )");
             }
 
@@ -181,8 +182,8 @@ client.on('message', message =>{
             message.channel.sendMessage(lyrics);
             message.channel.sendMessage(shuffled);
 
-            sessions[serverID].correctSongIndex = correctSongIndex;
-            sessions[serverID].correctSongName = correctSongName;
+            sessions[serverID].correctSongIndex = correctIndex;
+            sessions[serverID].correctSongName = correctAnswer;
             sessions[serverID].lyricsMode = true;
         }
 
