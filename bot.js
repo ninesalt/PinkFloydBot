@@ -9,15 +9,16 @@ var request = require('request');
 const client = new Discord.Client();
 
 var botID = "276798082857828354";
+
 var albums = [];   //has attributes album name and year
 var songs = [];      //non instrumentals only, has attributes (song) name, album, lyrics
 
+var sessions = {};
+
 var correctSongName;
 var correctSongIndex;
-
 var lyricsMode = false;
-
-var chatbrainID = Math.floor(Math.random()  * 1000000);
+var chatbrainID;
 
 client.on('ready', () => {
 
@@ -50,6 +51,21 @@ client.on('message', message =>{
     //to only read messages sent by other users
     if(message.author.id != botID){
 
+        var serverID = message.channel.guild.id;
+
+        //new server
+        if(sessions[serverID] == undefined){
+            sessions[serverID] = {correctSongName,  correctSongIndex,  lyricsMode: false, chatbrainID: serverID};
+        }
+
+        //session with server already exists, get data
+        else{
+            correctSongName = sessions[serverID].correctSongName;
+            correctSongIndex = sessions[serverID].correctSongIndex;
+            lyricsMode = sessions[serverID].lyricsMode;
+            chatbrainID = sessions[serverID].chatbrainID;
+        }
+
         //expecting answer
         if(lyricsMode){
 
@@ -68,7 +84,8 @@ client.on('message', message =>{
                 else{
                     message.channel.sendMessage("Nope. The correct answer was: '" + correctSongName + "'");
                 }
-                lyricsMode = false;
+                // lyricsMode = false;
+                sessions[serverID].lyricsMode = false;
             }
 
         }
@@ -137,7 +154,6 @@ client.on('message', message =>{
 
             //choices
             var correctAnswer = randomSong.name;  //one of the choices
-            correctSongName = correctAnswer;
 
             var choices = [];
             choices.push(correctAnswer);
@@ -152,11 +168,8 @@ client.on('message', message =>{
                 }
             }
 
-            // console.log(choices);
-
             var shuffled = _.shuffle(choices);
             var correctIndex = shuffled.indexOf(correctAnswer) + 1;
-            correctSongIndex = correctIndex;
 
             var i = 0;
 
@@ -167,14 +180,18 @@ client.on('message', message =>{
             message.channel.sendMessage("*What song are these lyrics from? Choose an answer by sending ]]1, ]]2, etc.*" );
             message.channel.sendMessage(lyrics);
             message.channel.sendMessage(shuffled);
-            lyricsMode = true;
+
+            sessions[serverID].correctSongIndex = correctSongIndex;
+            sessions[serverID].correctSongName = correctSongName;
+            sessions[serverID].lyricsMode = true;
         }
 
         //smart bot for other replies
         if(message.content.indexOf("]]]") != -1){
 
             var mess = message.content.substring(3, message.length).replace(" ", "+");
-            var url = "http://api.acobot.net/get?bid=539&key=UUNCBClsR71hvZG9&uid=" + chatbrainID+ "&msg=" + mess;
+            var id = sessions[serverID].chatbrainID;
+            var url = "http://api.acobot.net/get?bid=539&key=UUNCBClsR71hvZG9&uid=" + id + "&msg=" + mess;
             request(url, function(error, response, body) {
                 var reply = JSON.parse(body)['cnt'];
                 message.channel.sendMessage(reply);
@@ -187,8 +204,10 @@ client.on('message', message =>{
 
 client.login('Mjc2Nzk4MDgyODU3ODI4MzU0.C3UgIA.0oIt6ovSpBTcBBf83xqsl4MrphA');
 
-var server=http.createServer(function(req,res){
-    // res.end('test');
+var server = http.createServer(function(req,res){
+
+//
+
 });
 
 server.on('listening',function(){
