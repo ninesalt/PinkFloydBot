@@ -202,7 +202,7 @@ client.on('message', message =>{
                 return "**" + (++i) + "**: " + a;
             });
 
-            message.channel.sendMessage("*What song are these lyrics from? Choose an answer by sending ]]1, ]]2, etc.*" );
+            message.channel.sendMessage("*What song are these lyrics from? Choose an answer by sending `1`, `2`, etc.*" );
             message.channel.sendMessage(lyrics);
             message.channel.sendMessage(shuffled);
 

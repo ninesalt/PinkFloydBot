@@ -14,7 +14,7 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 * `]]lyrics song Name`: Displays the lyrics of the specified song. ie: `]]lyrics echoes`
 
-* `]]]whatever`: Triggers the smart bot. ie: `]]] whats up? `
+* `]]]whatever`: Triggers the smart bot. ie: `]]] whats up? ` *Credit goes to the [Acobot] (http://acobot.net/) team.*
 
 
 
