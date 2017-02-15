@@ -55,7 +55,15 @@ client.on('message', message =>{
 
         //new server
         if(sessions[serverID] == undefined){
-            sessions[serverID] = {correctSongName,  correctSongIndex,  lyricsMode: false, chatbrainID: serverID};
+
+            sessions[serverID] =
+            {
+                correctSongName,
+                correctSongIndex,
+                lyricsMode: false,
+                chatbrainID: serverID,
+                scores: {}
+            };
         }
 
         //session with server already exists, get data
@@ -69,23 +77,31 @@ client.on('message', message =>{
         //expecting answer
         if(lyricsMode){
 
-            //invalid answer
-            if(message.content.length > 3 || isNaN(message.content.substring(2))
-            || parseInt(message.content.substring(2)) < 1 || parseInt(message.content.substring(2)) > 5){
-                message.channel.sendMessage("Please enter an answer in the correct format (ie: ]]2 )");
-            }
+            var answer = message.content;
 
-            else{
+            if(answer.length == 1 && !isNaN(answer) && parseInt(answer) < 6 && parseInt(answer) > 0){
 
-                var ans = parseInt(message.content.substring(2));
+                answer = parseInt(answer);
+                var authorID = message.author.id;
 
-                if(ans == correctSongIndex){
+                if(answer == correctSongIndex){
+
                     message.channel.sendMessage("Yep! That's the correct answer.");
+
+                    if(sessions[serverID].scores[authorID] == undefined){
+                        sessions[serverID].scores[authorID] = 1;
+                    }
+
+                    else{
+                        sessions[serverID].scores[authorID]++;
+                    }
+                    var score = sessions[serverID].scores[authorID];
                 }
                 else{
                     message.channel.sendMessage("Nope. The correct answer was: '" + correctSongName + "'");
+                    sessions[serverID].scores[authorID] = 0;
                 }
-                // lyricsMode = false;
+                message.reply("Your current score is: " + sessions[serverID].scores[authorID]);
                 sessions[serverID].lyricsMode = false;
             }
 
@@ -207,7 +223,7 @@ client.login('Mjc2Nzk4MDgyODU3ODI4MzU0.C3UgIA.0oIt6ovSpBTcBBf83xqsl4MrphA');
 
 var server = http.createServer(function(req,res){
 
-//
+    //
 
 });
 
