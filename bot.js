@@ -35,7 +35,10 @@ client.on('ready', () => {
             var song = songsInAlbum[i];
 
             if(!song.instrumental){
-                songs.push({name: song.songName, album: album, lyrics: song.lyrics.replace(/&quot;/g, "'")});
+                songs.push(
+                    {name: song.songName,
+                    album: album,
+                    lyrics: song.lyrics.replace(/&quot;/g, "'").replace(/<i>/g, "").replace("</i>", "")});
             }
 
         }
@@ -48,9 +51,10 @@ client.on('ready', () => {
 
 client.on('message', message =>{
 
+
     //to only read messages sent by other users
     if(message.author.id != botID){
-
+        
         var serverID = message.channel.guild.id;
 
         //new server
@@ -159,6 +163,10 @@ client.on('message', message =>{
             while(lyrics == "Lyrics not found" || lyrics.split("\n").length - 1 < 3);
 
             var songLyrics = randomSong.lyrics.split("\n");
+
+            songLyrics = _.remove(songLyrics, function(a){
+                return  a != "\r";
+            });
 
             var randLyricsIndex = Math.floor(1 + (Math.random() * songLyrics.length - 3));
 
