@@ -240,8 +240,3 @@ server.on('listening',function(){
 });
 
 server.listen(process.env.PORT || 5050);
-
-//to keep the bot always awake
-setInterval(function(){
-    http.get("http://pinkfloydbot.herokuapp.com")
-}, 300000)
