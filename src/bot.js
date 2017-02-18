@@ -1,9 +1,6 @@
-// Link to add bot to your server/guild:
-// https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0
-
 var fs = require("fs");
 var _ = require('lodash');
-var http = require('http');
+var server = require('./server.js')
 const Discord = require('discord.js');
 var request = require('request');
 const client = new Discord.Client();
@@ -22,7 +19,7 @@ var chatbrainID;
 
 client.on('ready', () => {
 
-    var content = fs.readFileSync('DiscographyWithLyrics.json');
+    var content = fs.readFileSync(__dirname + "/../data/DiscographyWithLyrics.json");
     content = JSON.parse(content);
 
     for (var album in content) {
@@ -54,7 +51,7 @@ client.on('message', message =>{
 
     //to only read messages sent by other users
     if(message.author.id != botID){
-        
+
         var serverID = message.channel.guild.id;
 
         //new server
@@ -228,20 +225,4 @@ client.on('message', message =>{
 });
 
 client.login('Mjc2Nzk4MDgyODU3ODI4MzU0.C3UgIA.0oIt6ovSpBTcBBf83xqsl4MrphA');
-
-var server = http.createServer(function(req,res){
-
-    //
-
-});
-
-server.on('listening',function(){
-    console.log('Server is running');
-});
-
-server.listen(process.env.PORT || 5050);
-
-//to keep the bot always awake
-setInterval(function(){
-    http.get("http://pinkfloydbot.herokuapp.com")
-}, 300000)
+server.run();
