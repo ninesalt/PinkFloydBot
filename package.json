@@ -1,6 +1,6 @@
 {
     "name": "pink-floyd-trivia-bot",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "auto-updater":{
         "repo":"/swailem95/PinkFloydBot",
         "branch":"master"

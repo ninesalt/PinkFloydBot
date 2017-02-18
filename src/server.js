@@ -29,7 +29,7 @@ module.exports.run = function(){
 
     autoupdater.fire('check');
 
-    //to keep the bot awake
+    //to keep the bot awake 
 
     // setInterval(function(){
     //     http.get("http://pinkfloydbot.herokuapp.com")
