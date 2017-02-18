@@ -18,6 +18,27 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 
 
+###Examples:###
+
+* Lyrics trivia
+
+![image of lyrics game]
+(http://imgur.com/K9tCACb.png)
+
+
+
+ * Lyrics lookup
+
+![image of lyrics lookup]
+(https://i.imgur.com/yc8erJR.png)
+
+* Conversations
+
+![image of conversation]
+(https://i.imgur.com/xqrf2Od.png)
+
+
+
 
 ###Add to your server:###
 
