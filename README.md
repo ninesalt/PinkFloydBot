@@ -14,7 +14,7 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 * `]]lyrics song Name`: Displays the lyrics of the specified song. ie: `]]lyrics echoes`
 
-* `]]]whatever`: Triggers the smart bot. ie: `]]] whats up? ` *Credit goes to the [Acobot] (http://acobot.net/) team.*
+* `]]]whatever`: Triggers the smart bot. ie: `]]] whats up? ` *Credit goes to the [Acobot](http://acobot.net/) team.*
 
 
 
@@ -39,4 +39,4 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 ### Add to your server: ###
 
-Click [here] (https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0) to add this bot to your guild/server.
+Click [here](https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0) to add this bot to your guild/server.
