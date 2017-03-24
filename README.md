@@ -4,7 +4,7 @@ This is fairly simple Discord bot that does a bunch of cool things like lyrics t
 
 
 
-###Commands:###
+### Commands: ###
 
 The main delimeter for talking with the bot is `]]`. Alternativley, you could use `]]]` to trigger the smart replies.
 
@@ -18,28 +18,25 @@ The main delimeter for talking with the bot is `]]`. Alternativley, you could us
 
 
 
-###Examples:###
+### Examples: ###
 
 * Lyrics trivia
 
-![image of lyrics game]
-(http://imgur.com/K9tCACb.png)
+![image of lyrics game](http://imgur.com/K9tCACb.png)
 
 
 
  * Lyrics lookup
 
-![image of lyrics lookup]
-(https://i.imgur.com/yc8erJR.png)
+![image of lyrics lookup](https://i.imgur.com/yc8erJR.png)
 
 * Conversations
 
-![image of conversation]
-(https://i.imgur.com/xqrf2Od.png)
+![image of conversation](https://i.imgur.com/xqrf2Od.png)
 
 
 
 
-###Add to your server:###
+### Add to your server: ###
 
 Click [here] (https://discordapp.com/api/oauth2/authorize?client_id=276798082857828354&scope=bot&permissions=0) to add this bot to your guild/server.
