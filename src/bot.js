@@ -223,5 +223,5 @@ client.on('ready', () => {
 
         });
 
-        client.login('Mjc2Nzk4MDgyODU3ODI4MzU0.C3UgIA.0oIt6ovSpBTcBBf83xqsl4MrphA');
+        client.login('token-here');
         server.run();
