@@ -1,18 +1,22 @@
 {
-    "name": "pink-floyd-trivia-bot",
-    "version": "1.2.0",
-    "description": "",
-    "main": "bot.js",
-    "scripts": {
-        "start": "nodemon src/bot.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Youssef Swailem",
-    "license": "ISC",
-    "dependencies": {
-        "discord.js": "^11.0.0",
-        "lodash": "^4.17.4",
-        "nodemon": "^1.11.0",
-        "request": "^2.79.0"
-    }
+  "name": "pink-floyd-trivia-bot",
+  "version": "1.2.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "nodemon src/bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "author": "Youssef Swailem",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0",
+    "request": "^2.79.0",
+    "snyk": "^1.190.0"
+  },
+  "snyk": true
 }
